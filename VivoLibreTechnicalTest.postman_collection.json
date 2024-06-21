@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "09907263-8e78-40e7-b5a6-8b7e2a79b089",
+		"name": "VivoLibreTechnicalTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29962496"
+	},
+	"item": [
+		{
+			"name": "Login Vivolibre",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/vivolibre/get-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"vivolibre",
+						"get-token"
+					]
+				},
+				"description": "Servicio que devuelve recibos y su código de evento asociados a una póliza cuyo último evento es posterior a una fecha"
+			},
+			"response": [
+				{
+					"name": "Listado de eventos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"evento\": \"DV\",\n    \"fechaEfecto\": \"<date>\",\n    \"fechaEvento\": \"<date>\",\n    \"fechaExtincion\": \"<date>\",\n    \"importeTotalRecibo\": \"<double>\",\n    \"recibo\": \"<long>\"\n  },\n  {\n    \"evento\": \"CB\",\n    \"fechaEfecto\": \"<date>\",\n    \"fechaEvento\": \"<date>\",\n    \"fechaExtincion\": \"<date>\",\n    \"importeTotalRecibo\": \"<double>\",\n    \"recibo\": \"<long>\"\n  }\n]"
+				},
+				{
+					"name": "La solicitud contiene sintaxis errónea o datos incorrectos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \" Á9taw 28 \",\n  \"tipo\": \"\\r\",\n  \"apperrorcode\": \"rcpUíMN \",\n  \"detalles\": [\n    {\n      \"mensaje\": \"J\",\n      \"apperrorcode\": \"A\",\n      \"elemento\": \".h Óñ8\"\n    },\n    {\n      \"mensaje\": \"e\",\n      \"apperrorcode\": \"U\",\n      \"elemento\": \"ck᠎  \"\n    }\n  ],\n  \"locale\": \" SqY\\nw d\",\n  \"ruta\": \"Ó\\u000b-7 \",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "Solicitud no autenticada debido a un token ausente, no válido o caducado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"ÚÑ\\u000bN  9\",\n  \"tipo\": \"Ñ\",\n  \"apperrorcode\": \"Á\\fab8U\",\n  \"locale\": \"Cs\\u000b e1\",\n  \"ruta\": \"gzcg1u\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "Credenciales no correctas para poder ejecutar la operación solicitada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"5XSfVsuQÉX\",\n  \"tipo\": \"7h iP\",\n  \"apperrorcode\": \"   hóTGJSDZ\",\n  \"locale\": \"s 4f\",\n  \"ruta\": \"Z U7bu_8C\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "No se han encontrado coincidencias",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"H\\u000bOc.\",\n  \"tipo\": \" \\t  \\u000bgw﻿t i\",\n  \"apperrorcode\": \"﻿ñ\\rqTPs0B\",\n  \"locale\": \"6 0iB3\",\n  \"ruta\": \"Q D\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "El servidor no está capacitado para devolver los datos en ninguno de los formatos aceptados por el cliente, indicados por éste en la cabecera Accept de la petición.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Not Acceptable",
+					"code": 406,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \".E q7᠎\",\n  \"tipo\": \"W  \\tG G\\u000b\",\n  \"apperrorcode\": \" \",\n  \"locale\": \"d \",\n  \"ruta\": \"H2\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "La solicitud no pudo ser procesada debido a un conflicto con el estado actual del recurso que esta identifica,",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"Y\",\n  \"tipo\": \"h\\tvv  añ.W\",\n  \"apperrorcode\": \"bQP gú82\",\n  \"locale\": \" YTO nRbU \",\n  \"ruta\": \" d0\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "Se ha excedido el límite de solicitudes permitidas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Too Many Requests",
+					"code": 429,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"1tyYV W\",\n  \"tipo\": \" r ázW5É\",\n  \"apperrorcode\": \"ZbN9 \",\n  \"locale\": \"5o6kxLjDw\",\n  \"ruta\": \"2a- t\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "Error interno en el servidor",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"1QIé1 uóÍK\",\n  \"tipo\": \"\\n\\nt l\",\n  \"apperrorcode\": \"9Ái emIvL\",\n  \"locale\": \"E\\t vbE\\r\",\n  \"ruta\": \"F93x\\n \",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "Bad Gateway",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Bad Gateway",
+					"code": 502,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"C\\t Í\",\n  \"tipo\": \"T8i\",\n  \"apperrorcode\": \"ASñl\",\n  \"locale\": \" w C05᠎dzq\",\n  \"ruta\": \"R_ E\",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				},
+				{
+					"name": "Servicio no disponible",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "<token>",
+								"description": "Added as a part of security scheme: oauth2"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/polizas/:poliza/eventos?ramo=<integer>&fechaEvento=<date>&eventoCircuito=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"polizas",
+								":poliza",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "ramo",
+									"value": "<integer>",
+									"description": "(Required) Código del ramo"
+								},
+								{
+									"key": "fechaEvento",
+									"value": "<date>",
+									"description": "(Required) Fecha del evento. Formato: YYYY-MM-DD"
+								},
+								{
+									"key": "eventoCircuito",
+									"value": "<string>",
+									"description": "Código de evento de circuito"
+								}
+							],
+							"variable": [
+								{
+									"key": "poliza"
+								}
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"mensaje\": \"KlóPG .áb\",\n  \"tipo\": \"xE\",\n  \"apperrorcode\": \"m i \\u000bqP\",\n  \"locale\": \"O5GV\\t s\",\n  \"ruta\": \"IZ /﻿mM  \",\n  \"status\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}"
+				}
+			]
+		}
+	]
+}

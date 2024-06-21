@@ -1,0 +1,60 @@
+#info:
+#  app:
+#    name: Technical Test
+#    description: Technical Test for Vive Libre.
+#    version: 0.0.1-SNAPSHOT
+#
+#server:
+#  port: 8081
+#  # Never include stacktrace into error responses
+#  error:
+#    include-message: always
+#    include-stacktrace: always
+#    include-exception: true
+#    include-binding-errors: always
+#
+#spring:
+#  main.allow-bean-definition-overriding: true
+#  application:
+#    name: vivelibre
+#  jackson:
+#    serialization:
+#      WRITE_DATES_AS_TIMESTAMPS: false
+#      INDENT_OUTPUT: true
+#    default-property-inclusion: NON_NULL
+
+vivolibre:
+  rest:
+    timeout: 5000 
+  login:
+    url: http://localhost:8080/token
+    username: auth-vivelibre
+    password: password
+
+#management:
+#  endpoints:
+#    web:
+#      # In a case that we wat to access as "http://localhost:54321/management-axident-api/health" instead of "http://localhost:54321/actuator/health" we must to define a "base-path"
+#      exposure:
+#        include: '*'
+#  endpoint:
+#    health:
+#      show-details: ALWAYS
+#      group:
+#        readiness:
+#          include: db
+#        liveness:
+#          include: ping
+#         
+#springdoc:
+#  show-actuator: true
+#  swagger-ui:
+#    enabled: true
+#    tagsSorter: alpha
+#  api-docs:
+#    enabled: true
+#  show-login-endpoint: true
+#
+#logging:
+#  level:
+#    org.springframework.web.reactive.function.client.DefaultWebClient: TRACE

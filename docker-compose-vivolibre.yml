@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+
+  auth-vivelibre:
+    image: skeet15/auth-vivelibre
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/docker/santalucia/volumes/auth-vivelibre:/c/Users/pw-njandrade/docker/santalucia/volumes/auth-vivelibre
+    networks:
+      - knowmadmood
+
+networks:
+  knowmadmood:

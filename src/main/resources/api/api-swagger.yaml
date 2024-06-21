@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  title: Prueba Técnica Vivo Libre
+  description: Prueba Técnica Vivo Libre
+  contact:
+    name: Nelson Andrade
+    email: njandrade@knowmadmood.com
+  version: '1.0'
+servers:
+  - url: http://localhost:8081/
+    description: Local Server
+paths:
+  /get-token:
+    get:
+      tags:
+        - Authentication
+      summary: Retrieves a token
+      description: Retrieves a token
+      operationId: getToken
+      responses:
+        '200':
+          description: Token Response Details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Invalid token, not received token or expired token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_401'
+        '403':
+          description: Invalid credentials to execute this operation due unsufficient scopes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_403'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_500'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_502'
+        '503':
+          description: Service unavailable error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_503'
+components:
+  schemas:
+    TokenResponse:
+      required:
+        - auth-vivelibre-token
+        - date
+      type: object
+      properties:
+        auth-vivelibre-token:
+          type: string
+          description: The token
+          example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3MTg3MjE0MjAsImV4cCI6MTc1MDI1NzQyMCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.EZnKoNI3cOgjLJ1FsS5wLv2J_puxu3Nm2BcmDUD-Gic'
+        date:
+          type: string
+          pattern: "MMMM d, u"
+          description: The token
+#          format: date
+    error_400:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Bad Request
+          example: Bad Request
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Bad Request
+    error_401:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Not Acceptable
+          example: Not Acceptable
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Unauthorized Access
+    error_403:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Forbidden
+          example: Forbidden
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Forbidden
+    error_500:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Internal Server Error
+          example: Internal Server Error
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Internal Server Error
+    error_502:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Bad Gateway
+          example: Bad Gateway
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Bad Gateway
+    error_503:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Server Unavailable
+          example: Server Unavailable
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Server Unavailable
+    error_404:
+      required:
+        - type
+        - message
+      type: object
+      properties:
+        type:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: Not Found
+          example: Not Found
+        message:
+          maxLength: 50
+          pattern: ^[-,.ñÑáéíóúÁÉÍÓÚ\w\s]+$
+          type: string
+          description: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+          example: The server is not capable of returning data in any of the formats accepted by the client, indicated by the client in the Accept header of the request.
+      description: Not Found
+  responses:
+    error_400:
+      description: La solicitud contiene sintaxis errónea o datos incorrectos
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_400'
+    error_401:
+      description: Solicitud no autenticada debido a un token ausente, no válido o caducado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_401'
+    error_403:
+      description: Credenciales no correctas para poder ejecutar la operación solicitada
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_403'
+    error_500:
+      description: Error interno en el servidor
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_500'
+    error_502:
+      description: Bad Gateway
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_502'
+    error_503:
+      description: Servicio no disponible
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_503'
+    error_404:
+      description: No se han encontrado coincidencias
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_404'
+
+
+
